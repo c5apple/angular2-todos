@@ -1,0 +1,23 @@
+/* 入力エリア */
+form {
+  margin-bottom: 10px;
+}
+input, textarea {
+  width: 80%;
+  display: block;
+}
+/* TODOリスト */
+.todos {
+  border: 1px solid #ccc;
+  clear: both;
+  width: 80%;
+  padding: 10px;
+}
+.no {
+  font-size: x-large;
+  font-weight: bold;
+  color: #999;
+  padding: 20px;
+  margin-right: 10px;
+  float: left;
+}

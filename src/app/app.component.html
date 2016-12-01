@@ -1,3 +1,12 @@
-<h1>
-  {{title}}
-</h1>
+<h1>TODOリスト</h1>
+<form (ngSubmit)="onSubmit()" #todoForm="ngForm">
+  <input type="text" name="title" [(ngModel)]="todo.title" value="" required placeholder="title">
+  <textarea name="desc" [(ngModel)]="todo.desc" required placeholder="desc"></textarea>
+  <button [disabled]="!todoForm.form.valid">登録</button>
+</form>
+<div class="todos" *ngFor="let todo of todos; let i = index">
+  <p class="no">{{i+1}}</p>
+  <p>{{todo.title}}</p>
+  <pre>{{todo.desc}}</pre>
+  <button (click)="onDelete(i)">削除</button>
+</div>
