@@ -1,25 +1,30 @@
 import { Component } from '@angular/core';
-class Todo {
-  title: string;
-  desc: string;
-}
+import { Todo } from './todo';
+import { TodoService } from './todo.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(
+    private todoService: TodoService
+  ) { }
+
   private todo: Todo;
   private todos: Todo[];
+
   ngOnInit(): void {
     this.todo = new Todo;
-    this.todos = [];
+    this.todos = this.todoService.list;
   }
   public onSubmit(): void {
-    this.todos.push(this.todo);
+    this.todoService.add(this.todo);
     this.todo = new Todo;
   }
   public onDelete(index: number): void {
-    this.todos.splice(index, 1);
+    this.todoService.delete(index);
   }
 }
